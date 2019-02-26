@@ -6,7 +6,7 @@ const Schema = mongoose.Schema
 
 module.exports = (app) => {
 
-    // Scrape and add to the mongoDB
+    // Scrape the articles
     app.get("/scrape", (req, res) => {
         let datas = []
         axios.get("https://www.theverge.com/tech").then(function (response) {
@@ -34,13 +34,10 @@ module.exports = (app) => {
                     .children("div")
                     .children("noscript")
                     .text()
-                // console.log(imageURL)
+                
                 if (imageURL) {
                     result.image = imageURL.split(" ")[2].split('"')[1]
                 }
-                // else {
-                //     result.image = "https://via.placeholder.com/150"
-                // }
 
                 result.author = $(element)
                     .children("div")
@@ -50,6 +47,7 @@ module.exports = (app) => {
                     .first()
                     .children("a")
                     .text()
+
                 result.profile = $(element)
                     .children("div")
                     .children("div")
@@ -68,7 +66,7 @@ module.exports = (app) => {
                     })
                     .catch(err => console.log(err))
             })
-            console.log(datas)
+            // console.log(datas)
             res.send("scrape complete")
 
 

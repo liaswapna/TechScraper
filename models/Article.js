@@ -6,12 +6,11 @@ const Schema = mongoose.Schema
 const ArticleSchema = new Schema({
     title:{
         type: String,
-        required: true
+        default:"No title"
     },
     link:{
         type: String,
-        required: true,
-        unique: true
+        default:"https://www.theverge.com/tech"
     },
     image:{
         type: String,
@@ -19,11 +18,11 @@ const ArticleSchema = new Schema({
     },
     author:{
         type: String,
-        required: true,
         default:"anonymous"
     },
     profile:{
-        type: String
+        type: String,
+        default:"#"
     },
     note:[{
         type: Schema.Types.ObjectId,
