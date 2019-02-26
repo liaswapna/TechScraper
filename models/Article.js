@@ -6,11 +6,13 @@ const Schema = mongoose.Schema
 const ArticleSchema = new Schema({
     title:{
         type: String,
-        default:"No title"
+        required: true,
+        unique: true,
     },
     link:{
         type: String,
-        default:"https://www.theverge.com/tech"
+        required: true,
+        unique: true,
     },
     image:{
         type: String,

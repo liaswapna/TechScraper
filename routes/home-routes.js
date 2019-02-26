@@ -8,7 +8,7 @@ module.exports = (app) => {
 
     // Scrape the articles
     app.get("/scrape", (req, res) => {
-        let datas = []
+        // let datas = []
         axios.get("https://www.theverge.com/tech").then(function (response) {
             let $ = cheerio.load(response.data)
 
@@ -57,7 +57,7 @@ module.exports = (app) => {
                     .children("a")
                     .attr("href")
 
-                datas.push(result)
+                // datas.push(result)
 
                 // Insert datas into Article model
                 db.Article.findOrCreate(result)
@@ -74,6 +74,18 @@ module.exports = (app) => {
             // res.render("test", { data: datas })
             // res.redirect("/")
         })
+    })
+
+    // Render home page route
+    app.get("/", (req, res) => {
+        db.Article.find({})
+            .populate('note')
+            .then(function (dbArticleNote) {
+                // console.log(dbArticleNote[0])
+                res.render("home", { data: dbArticleNote })
+                // res.json(dbArticleNote)
+            })
+            .catch(err => res.send("ERROR"))
     })
 
 }

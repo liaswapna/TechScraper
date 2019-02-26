@@ -1,0 +1,52 @@
+<div class="row container center-align" id="cardHolder">
+  {{#each data}}
+  <div class="col s12 m2" id="card-each">
+    <div class="card">
+      {{!-- <div class="card-image waves-effect waves-block waves-light">
+      <img class="activator" src="images/office.jpg"> --}}
+      {{!-- </div> --}}
+      <div class="card-content">
+        {{!-- <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span> --}}
+        <p class="activator">{{title}}</p>
+        <div>
+          <a href={{link}} target="_blank"><i class="material-icons">link</i></a>
+          <span class="new badge activator" data-badge-caption="comment">{{note.length}}</span>
+        </div>
+        <a class="waves-effect btn-small waves-light btn"><i class="material-icons right">add</i>COMMENT</a>
+        <a class="waves-effect btn-small waves-light btn"><i class="material-icons right">save</i>SAVE</a>
+
+        {{!-- list the comments --}}
+        <ul class="collapsible">
+          <li>
+            <div class="collapsible-header"><i class="material-icons">comment</i>Comments</div>
+            <div class="collapsible-body">
+              <table>
+                <tbody>
+                {{#each note}}
+                <tr>
+                <td>{{title}}:{{body}}</td>
+                <td><a href="/deletecomment/{{_id}}"><i class="delete material-icons">delete</i></a></td>
+                </tr>
+                {{/each}}
+                </tbody>
+              </table>
+            </div>
+          </li>
+      </div>
+
+      {{!-- add comments --}}
+      <div class="card-reveal">
+        <input placeholder="Placeholder" id="title-{{_id}}" type="text" class="validate">
+        <input placeholder="Placeholder" id="body-{{_id}}" type="text" class="validate">
+        <div>
+        <a data-id={{_id}} class="btn-floating card-title btn-small waves-effect waves-light teal addNote" id="add-Note"><i
+            class="material-icons">add</i></a>
+        <a class="btn-floating btn-small card-title waves-effect waves-light red" id="close-Note"><i class="material-icons">close</i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{/each}}
+</div>
+
+<script src="/js/home-app.js"></script>
