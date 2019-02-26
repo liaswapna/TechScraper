@@ -76,6 +76,7 @@ module.exports = (app) => {
     })
 
     // Render home page route
+    // Datas: articles & notes
     app.get("/", (req, res) => {
         db.Article.find({})
             .populate('note')
@@ -86,5 +87,34 @@ module.exports = (app) => {
             })
             .catch(err => res.send("ERROR"))
     })
+
+    // push the comments into note model and update article model
+    app.post("/articles/:id", (req, res) => {
+        console.log(req.params.id)
+        console.log(req.body)
+        db.Note.create(req.body)
+            // author.stories.push(story1);
+            // .then(dbNote => db.Article.note.push({_id:req.params.id},{note: dbNote._id},{new:true}))
+            .then(dbNote => db.Article.findOneAndUpdate({ _id: req.params.id }, { "$push": { note: dbNote._id } }, { new: true }))
+            .then(dbArticle => res.json(dbArticle))
+            .catch(err => res.json(err))
+        // db.Article.findOne({_id:req.params.id})
+        //     .then(dbArticle => res.json(dbArticle))
+        //     .catch(err => res.json(err))
+    })
+
+    // route to delete the comment
+    app.get("/deleteComment/:id", (req, res) => {
+        console.log(req.params.id)
+        db.Note.deleteOne({ _id: req.params.id })
+            .then(dbNote => (db.Article.findOneAndUpdate({ note: req.params.id }, { "$pull": { note: req.params.id } })))
+            .then(dbArticle => {
+                // console.log(dbArticle)
+                res.redirect("/")
+            })
+            .catch(err => res.json(err))
+
+
+    });
 
 }

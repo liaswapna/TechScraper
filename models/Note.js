@@ -3,7 +3,7 @@ const Schema = mongoose.Schema
 
 // Define Schema for the Note model
 const NoteSchema = new Schema({
-    User: {
+    user: {
         type: String,
         default: "Guest"
     },
