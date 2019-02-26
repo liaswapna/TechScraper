@@ -26,6 +26,10 @@ const ArticleSchema = new Schema({
         type: String,
         default:"#"
     },
+    saved:{
+        type: Boolean,
+        default: "false"
+    },
     note:[{
         type: Schema.Types.ObjectId,
         ref: "Note"

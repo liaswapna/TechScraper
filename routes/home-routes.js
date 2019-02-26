@@ -67,12 +67,11 @@ module.exports = (app) => {
                     .catch(err => console.log(err))
             })
             // console.log(datas)
-            res.send("scrape complete")
+            // res.send("scrape complete")
 
 
 
-            // res.render("test", { data: datas })
-            // res.redirect("/")
+            res.redirect("/")
         })
     })
 
