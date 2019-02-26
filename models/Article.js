@@ -8,10 +8,6 @@ const ArticleSchema = new Schema({
         type: String,
         required: true
     },
-    author:{
-        type: String,
-        required: true
-    },
     link:{
         type: String,
         required: true,
@@ -21,13 +17,18 @@ const ArticleSchema = new Schema({
         type: String,
         default: "https://via.placeholder.com/150"
     },
-    media:{
+    author:{
+        type: String,
+        required: true,
+        default:"anonymous"
+    },
+    profile:{
         type: String
     },
-    note:{
+    note:[{
         type: Schema.Types.ObjectId,
         ref: "Note"
-    }
+    }]
 })
 
 // Define the plugin
