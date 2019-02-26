@@ -78,7 +78,7 @@ module.exports = (app) => {
     // Render home page route
     // Datas: articles & notes
     app.get("/", (req, res) => {
-        db.Article.find({})
+        db.Article.find({saved: false})
             .populate('note')
             .then(function (dbArticleNote) {
                 // console.log(dbArticleNote[0])
@@ -102,6 +102,15 @@ module.exports = (app) => {
         //     .then(dbArticle => res.json(dbArticle))
         //     .catch(err => res.json(err))
     })
+
+    app.get("/updateSave/:id", (req, res) => {
+        db.Article.findOneAndUpdate({ _id: req.params.id }, { saved: true })
+            .then(dbArticle => {
+                // console.log(dbArticle)
+                res.redirect("/")
+            })
+            .catch(err => res.json(err))
+    });
 
     // route to delete the comment
     app.get("/deleteComment/:id", (req, res) => {
