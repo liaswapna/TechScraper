@@ -28,18 +28,19 @@ A web app that lets users view and leave comments on the latest Tech news articl
 ---
 ```js
 {
-"axios": "^0.18.0",
-"cheerio": "^1.0.0-rc.2",
-"express": "^4.16.4",
-"express-handlebars": "^3.0.2",
-"mongoose": "^5.4.15"
+    "axios": "^0.18.0",
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.2",
+    "mongoose": "^5.4.15",
+    "mongoose-findorcreate": "^3.0.0"
 }
 ```
 
 ### Demos :earth_asia:
 ---
 TechScraper
-* [Heroku Link]()
+* [Heroku Link](https://tech-scraper-lia.herokuapp.com/)
 
 ### Screenshot
 ---
