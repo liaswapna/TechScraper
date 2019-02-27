@@ -2,8 +2,6 @@
     <div class="nav-wrapper">
         <ul id="nav-mobile" class="left">
             <li><a href="/">Home</a></li>
-            <li><a href="/saved">Saved Article</a></li>
-            <li><a href="/scrape">Scrape</a></li>
         </ul>
     </div>
 </nav>
@@ -19,15 +17,15 @@
                 {{!-- <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span> --}}
                 <p>{{title}}</p>
                 <p>By <a href={{profile}}>{{author}}</a></p>
-                <div>
+                <div class="link-note">
                     <a href={{link}} target="_blank"><i class="material-icons">link</i></a>
                     <span class="new badge activator" data-badge-caption="comment">{{note.length}}</span>
                 </div>
                 <div class="cardBtn center-align">
                 <a data-id={{_id}} class="activator btn-floating btn-small waves-effect waves-light teal cardBtn-a"
                         id="add-Note"><i class="material-icons">add</i></a>
-                <a data-id={{_id}} href="/updateSave/{{_id}}" class="btn-floating btn-small waves-effect waves-light teal cardBtn-a"
-                        id="add-Note"><i class="material-icons">save</i></a>
+                <a data-id={{_id}} href="/updateUnSave/{{_id}}" class="btn-floating btn-small waves-effect waves-light red cardBtn-a"
+                        id="add-Note"><i class="material-icons">remove_circle_outline</i></a>
                 {{!-- <a class="waves-effect btn-small waves-light btn"><i class="material-icons right">add</i>COMMENT</a>
                 <a class="waves-effect btn-small waves-light btn"><i class="material-icons right">save</i>SAVE</a> --}}
                 </div>

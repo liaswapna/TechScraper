@@ -8,54 +8,41 @@ nav{
 .side-nav{
     display: none;
 }
-/* .container{
-    width:800px !important;
-    margin: 20px auto 100px auto !important;
-} */
-
-/* .row{
-    justify-content: center !important;
-}
-.card,.col{
-    padding: 0px !important;
-    margin: 0px !important;
-}
-.col{
-    margin: 1px !important;
-} */
 #cardHolder{
     display:flex;
     align-items:flex-start;
     justify-content:flex-start;
     flex-flow: row wrap;
     width:100%;
-    /* opacity: .85; */
+    opacity: .95;
     width:800px !important;
     margin: 30px auto 100px auto !important;
-  }
+}
 #card-each{
     width:calc(95% / 3);
     padding:0;
     margin:4px;
-  }
+}
 #card-border{
     border: 3px solid teal;
 }
-/* .card-content{
-    border: 3px solid teal;
-} */
+.link-note{
+    margin: 20px 5px;
+}
 #close-Note,#add-Note{
     float: left !important;
     margin: 5px;
 }
 .cardBtn{
     text-align: center !important;
-    margin: 5px auto !important;
+    margin: 5px 20px !important;
+}
+.cardBtn-a{
+    margin: 20px !important;
 }
 .comment-div{
     clear:both;
 }
-
 .delete{
     color: teal;
 }
@@ -69,35 +56,45 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
-  }
-  main {
+}
+main {
     flex: 1 0 auto;
-  }
+}
 .page-footer {
     position: fixed;
     bottom: 0;
     width: 100%;
     font-size: 12px;
     z-index: 5;
-  }
+}
 
 @media only screen and (max-width: 600px) {
     #card-each {
-      width:99%;
+      width:95%;
     }
-    .container{
-        width: auto !important;
+    #cardHolder{
+        width: 100vw !important;
+        margin: auto;
     }
-    /* nav{
-        display:block !important;
-    } */
-    /* .side-nav{
-        display: block;
-    } */
-  }
+    .cardBtn-a{
+        margin: 20px 80px 20px auto!important;
+    }
+    .link-note{
+        margin: 20px 130px 20px auto;
+    }
+}
 
-  @media only screen and (min-width: 993px){
-    nav a.button-collapse {
-        display: block;
+@media (min-width: 600px) and (max-width: 800px) {
+  #card-each{
+    width:calc(95% / 2);
+    padding:0;
+    margin:4px;
+  }
+  #cardHolder{
+    width: 100vw !important;
+    margin: auto;
     }
+    .cardBtn-a{
+        margin: 20px !important;
     }
+}

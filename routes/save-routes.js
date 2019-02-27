@@ -16,4 +16,13 @@ module.exports = (app) => {
             .catch(err => res.send("ERROR"))
         // res.render("save")
     });
+
+    app.get("/updateUnSave/:id", (req, res) => {
+        db.Article.findOneAndUpdate({ _id: req.params.id }, { saved: false })
+            .then(dbArticle => {
+                // console.log(dbArticle)
+                res.redirect("/saved")
+            })
+            .catch(err => res.json(err))
+    });
 }
