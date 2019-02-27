@@ -1,6 +1,5 @@
 body{
     background-color: black;
-    /* background-image: url(../images/bg-black.jpg) */
 }
 nav{
     padding: 0px 10px;
@@ -85,14 +84,14 @@ main {
 }
 
 @media (min-width: 600px) and (max-width: 800px) {
-  #card-each{
-    width:calc(95% / 2);
-    padding:0;
-    margin:4px;
-  }
-  #cardHolder{
-    width: 100vw !important;
-    margin: auto;
+    #card-each{
+        width:calc(95% / 2);
+        padding:0;
+        margin:4px;
+    }
+    #cardHolder{
+        width: 100vw !important;
+        margin: auto;
     }
     .cardBtn-a{
         margin: 20px !important;

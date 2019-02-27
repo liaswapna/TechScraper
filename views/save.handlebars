@@ -6,6 +6,7 @@
     </div>
 </nav>
 
+{{!-- card container --}}
 <div class="row container center-align" id="cardHolder">
     {{#each data}}
     <div class="col s12 m2" id="card-each">
@@ -14,7 +15,6 @@
                 <img class="article-image" src={{image}}>
             </div>
             <div class="card-content">
-                {{!-- <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span> --}}
                 <p>{{title}}</p>
                 <p>By <a href={{profile}}>{{author}}</a></p>
                 <div class="link-note">
@@ -22,35 +22,34 @@
                     <span class="new badge activator" data-badge-caption="comment">{{note.length}}</span>
                 </div>
                 <div class="cardBtn center-align">
-                <a data-id={{_id}} class="activator btn-floating btn-small waves-effect waves-light teal cardBtn-a"
+                    <a data-id={{_id}} class="activator btn-floating btn-small waves-effect waves-light teal cardBtn-a"
                         id="add-Note"><i class="material-icons">add</i></a>
-                <a data-id={{_id}} href="/updateUnSave/{{_id}}" class="btn-floating btn-small waves-effect waves-light red cardBtn-a"
-                        id="add-Note"><i class="material-icons">remove_circle_outline</i></a>
-                {{!-- <a class="waves-effect btn-small waves-light btn"><i class="material-icons right">add</i>COMMENT</a>
-                <a class="waves-effect btn-small waves-light btn"><i class="material-icons right">save</i>SAVE</a> --}}
+                    <a data-id={{_id}} href="/updateUnSave/{{_id}}"
+                        class="btn-floating btn-small waves-effect waves-light red cardBtn-a" id="add-Note"><i
+                            class="material-icons">remove_circle_outline</i></a>
                 </div>
 
                 {{!-- list the comments --}}
                 <div class="comment-div">
-                <ul class="collapsible">
-                    <li>
-                        <div class="collapsible-header"><i class="material-icons">comment</i>Comments</div>
-                        <div class="collapsible-body">
-                            <table>
-                                <tbody>
-                                    {{#each note}}
-                                    <tr>
-                                        <td style="color:salmon">{{user}}:</td>
-                                        <td>{{note}}</td>
-                                        <td><a href="/deletecomment/{{_id}}"><i
-                                                    class="delete material-icons">delete</i></a></td>
-                                    </tr>
-                                    {{/each}}
-                                </tbody>
-                            </table>
-                        </div>
-                    </li>
-                </ul>
+                    <ul class="collapsible">
+                        <li>
+                            <div class="collapsible-header"><i class="material-icons">comment</i>Comments</div>
+                            <div class="collapsible-body">
+                                <table>
+                                    <tbody>
+                                        {{#each note}}
+                                        <tr>
+                                            <td style="color:salmon">{{user}}:</td>
+                                            <td>{{note}}</td>
+                                            <td><a href="/deletecomment/{{_id}}"><i
+                                                        class="delete material-icons">delete</i></a></td>
+                                        </tr>
+                                        {{/each}}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
 
