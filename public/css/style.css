@@ -17,6 +17,13 @@ nav{
 .sign-in{
     margin:10px auto;
 }
+.sign-in div div span{
+    padding: 0px 30px 30px 0px !important;
+    margin-bottom: 30px !important;
+}
+#not_signed_injvku5153a6l7{
+    padding:20px;
+}
 #cardHolder{
     display:flex;
     align-items:flex-start;

@@ -7,11 +7,18 @@ const Schema = mongoose.Schema
 
 module.exports = (app) => {
 
-    //  Render save page
+    //  Render save page with nested collection
     app.get("/savedPage/:id", (req, res) => {
         db.User.find({ _id: req.params.id })
-            .populate('saved')
+            .populate({
+                path:'saved',
+                populate:{
+                    path: 'note',
+                    model: 'Note'
+                }
+            })
             .then(function (dbUserArticle) {
+                console.log(dbUserArticle[0])
                 res.render("save", { userId: req.params.id, data: dbUserArticle[0].saved })
             })
             .catch(err => res.send("ERROR"))
