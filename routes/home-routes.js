@@ -76,6 +76,16 @@ module.exports = (app) => {
             .catch(err => res.send("ERROR"))
     })
 
+    // Save the user details to user collection
+    app.post("/user", (req, res) => {
+        console.log(req.body)
+        db.User.findOrCreate(req.body)
+            .then(dbUser => {
+                res.json({id:dbUser.doc._id,userName:dbUser.doc.userName})
+            })
+            .catch(err => console.log(err))
+    })
+
     // push the comments into note model and update article model
     app.post("/articles/:id", (req, res) => {
         db.Note.create(req.body)

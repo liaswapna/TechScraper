@@ -1,6 +1,9 @@
 $(document).ready(() => {
     $('.collapsible').collapsible();
 
+    let userDetail = JSON.parse(localStorage.getItem("userDetail"));
+    $("#welcome").text("Saved articles of " + userDetail.userName)
+
     // add note button event handler
     $(document).on("click", ".addNote", function (e) {
         e.preventDefault()

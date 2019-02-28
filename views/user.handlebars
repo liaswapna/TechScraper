@@ -2,18 +2,22 @@
     <div class="nav-wrapper">
         <ul id="nav-mobile" class="left">
             <li><a class="listBtn" href="/userPage/{{userId}}">Home</a></li>
+            <li><a class="listBtn" href="/saved/{{userId}}">Saved Article</a></li>
+            <li><a class="listBtn" href="/scrape">Scrape</a></li>
+            <li><a class="listBtn button is-light" id="logout">Sign out</a></li>
+            <li style="display:none"><a class="sign-in g-signin2" data-onsuccess="onSignIn" >Sign-in</a></li>
             <li><span id="welcome"></span></li>
         </ul>
     </div>
 </nav>
 
-{{!-- card container --}}
+{{!-- Card container --}}
 <div class="row container center-align" id="cardHolder">
     {{#each data}}
     <div class="col s12 m2" id="card-each">
         <div class="card" id="card-border">
             <div class="card-image waves-effect waves-block waves-light">
-                <img class="article-image" src={{image}}>
+                <img class="article-image responsive-img" src={{image}}>
             </div>
             <div class="card-content">
                 <p>{{title}}</p>
@@ -23,11 +27,11 @@
                     <span class="new badge" data-badge-caption="comments">{{note.length}}</span>
                 </div>
                 <div class="cardBtn center-align">
-                    <a data-id={{_id}} class="activator btn-floating btn-small waves-effect waves-light teal cardBtn-a"
-                        id="add-Note"><i class="material-icons">add</i></a>
-                    <a data-id={{_id}} href="/updateUnSave/{{../userId}}/{{_id}}"
-                        class="btn-floating btn-small waves-effect waves-light red cardBtn-a" id="add-Note"><i
-                            class="material-icons">remove_circle_outline</i></a>
+                    <a data-id={{_id}} class="activator btn-floating btn-small waves-effect waves-light teal cardBtn-a addComment"
+                        id="add-comment"><i class="material-icons">add</i></a>
+                    <a data-id={{_id}} 
+                        class="btn-floating btn-small waves-effect waves-light teal cardBtn-a saveArticle" id="save-article"><i
+                            class="material-icons">save</i></a>
                 </div>
 
                 {{!-- list the comments --}}
@@ -70,4 +74,4 @@
     {{/each}}
 </div>
 
-<script src="/js/save-app.js"></script>
+<script src="/js/user-app.js"></script>

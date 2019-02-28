@@ -4,8 +4,18 @@ body{
 nav{
     padding: 0px 10px;
 }
+#welcome{
+    border: 2px double salmon;
+    padding: 2px;
+}
+.listBtn:hover {
+    color:salmon !important;
+}
 .side-nav{
     display: none;
+}
+.sign-in{
+    margin:10px auto;
 }
 #cardHolder{
     display:flex;
@@ -68,6 +78,9 @@ main {
 }
 
 @media only screen and (max-width: 600px) {
+    nav{
+        height: 100px;
+    }
     #card-each {
       width:95%;
     }

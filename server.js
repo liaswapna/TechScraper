@@ -25,6 +25,7 @@ mongoose.connect(MONGODB_URI,{useNewUrlParser: true})
 
 require("./routes/home-routes.js")(app)
 require("./routes/save-routes.js")(app)
+require("./routes/user-routes.js")(app)
 
 app.listen(PORT,()=>{
     console.log("App running on port:%s",PORT)
