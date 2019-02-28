@@ -68,6 +68,7 @@ module.exports = (app) => {
     // Datas: articles & notes
     app.get("/", (req, res) => {
         db.Article.find({ saved: false })
+            .sort('date')
             .populate('note')
             .then(function (dbArticleNote) {
                 res.render("home", { data: dbArticleNote })
