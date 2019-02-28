@@ -103,14 +103,14 @@ module.exports = (app) => {
     // });
 
     // route to delete the comment
-    app.get("/deleteComment/:id", (req, res) => {
-        console.log(req.params.id)
-        db.Note.deleteOne({ _id: req.params.id })
-            .then(dbNote => (db.Article.findOneAndUpdate({ note: req.params.id }, { "$pull": { note: req.params.id } })))
-            .then(dbArticle => {
-                res.redirect("/")
-            })
-            .catch(err => res.json(err))
-    });
+    // app.get("/deleteComment/:id", (req, res) => {
+    //     console.log(req.params.id)
+    //     db.Note.deleteOne({ _id: req.params.id })
+    //         .then(dbNote => (db.Article.findOneAndUpdate({ note: req.params.id }, { "$pull": { note: req.params.id } })))
+    //         .then(dbArticle => {
+    //             res.redirect("/")
+    //         })
+    //         .catch(err => res.json(err))
+    // });
 
 }

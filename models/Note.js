@@ -1,5 +1,6 @@
 const mongoose = require("mongoose")
 const Schema = mongoose.Schema
+const db = require("../models")
 
 // Define Schema for the Note model
 const NoteSchema = new Schema({
@@ -17,11 +18,11 @@ const NoteSchema = new Schema({
     }
 })
 
-NoteSchema.pre('remove', function(next) {
-    // 'this' is the client being removed. Provide callbacks here if you want
-    // to be notified of the calls' result.
-    Article.remove({client_id: this._id}).exec();
-    user.remove({client_id: this._id}).exec();
+// Define middleware to handle cascade delete
+NoteSchema.post('remove', async function(next) {
+    
+    await this.Article.findOneAndUpdate({ note: this._id }, { "$pull": { note: this._id } })
+    await this.User.findOneAndUpdate({ note: this._id }, { "$pull": { note: this._id } })
     next();
 });
 

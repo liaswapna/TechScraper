@@ -100,4 +100,20 @@ module.exports = (app) => {
             .catch(err => res.json(err))
             
     });
+
+    app.get("/deleteComment/:id/:userId", (req, res) => {
+        // console.log(req.params.id)
+        db.Note.findById(req.params.id)
+            .then(dbNote => { 
+
+                // adding model reference
+                dbNote.Article = db.Article
+                dbNote.User = db.User
+
+                // console.log(dbNote)
+                dbNote.remove(function(){
+                    res.redirect("/userPage/"+req.params.userId)
+                })
+            })
+    });
 }
