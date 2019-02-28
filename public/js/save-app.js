@@ -23,7 +23,7 @@ $(document).ready(() => {
             url: '/addUserNoteSavePage/'+userId+'/'+articleId,
             data: data
         })
-            .then((data) => { window.location.href = '/savePage/'+userDetail.userId })
+            .then((data) => { window.location.href = '/savedPage/'+userDetail.userId })
             .catch(err => console.log(err))
     })
 

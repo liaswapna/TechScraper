@@ -34,8 +34,24 @@ module.exports = (app) => {
             .catch(err => res.json(err))
     });
 
-    // post user notes and redirect to savePage
+    // dele
+    app.get("/deleteCommentSavePage/:id/:userId", (req, res) => {
+        // console.log(req.params.id)
+        db.Note.findById(req.params.id)
+            .then(dbNote => { 
 
+                // adding model reference
+                dbNote.Article = db.Article
+                dbNote.User = db.User
+
+                // console.log(dbNote)
+                dbNote.remove(function(){
+                    res.redirect("/savedPage/"+req.params.userId)
+                })
+            })
+    });
+
+    // post user notes and redirect to savePage
     app.post("/addUserNoteSavePage/:userId/:articleId", (req, res) => {
         console.log(req.params)
         console.log(req.body)
@@ -44,7 +60,7 @@ module.exports = (app) => {
                 return [db.Article.findOneAndUpdate({ _id: req.params.articleId }, { "$push": { note: dbNote._id } }, { new: true }),dbNote]
             })
             .spread((dbArticle, dbNote) => (db.User.findOneAndUpdate({ _id: req.params.userId},{ "$push": { note: dbNote._id }},{ new: true })))
-            .then(dbNote => res.redirect('/savePage/'+req.params.userId))
+            .then(dbNote => res.redirect('/savedPage/'+req.params.userId))
             .catch(err => res.json(err))
     })
 
