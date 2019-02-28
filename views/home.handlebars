@@ -2,7 +2,6 @@
     <div class="nav-wrapper">
         <ul id="nav-mobile" class="left">
             <li><a class="listBtn" href="/">Home</a></li>
-            {{!-- <li><a href="/saved">Saved Article</a></li> --}}
             <li><a class="listBtn" href="/scrape">Scrape</a></li>
             <li><a class="listBtn sign-in g-signin2" data-onsuccess="onSignIn" >Sign-in</a></li>
         </ul>
@@ -27,9 +26,6 @@
                 <div class="cardBtn center-align">
                     <a data-id={{_id}} class="activator btn-floating btn-small waves-effect waves-light teal cardBtn-a"
                         id="add-Note"><i class="material-icons">add</i></a>
-                    <a data-id={{_id}} href="/updateSave/{{_id}}"
-                        class="btn-floating btn-small waves-effect waves-light teal cardBtn-a" id="add-Note"><i
-                            class="material-icons">save</i></a>
                 </div>
 
                 {{!-- list the comments --}}

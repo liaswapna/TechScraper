@@ -67,7 +67,7 @@ module.exports = (app) => {
     // Render home page route
     // Datas: articles & notes
     app.get("/", (req, res) => {
-        db.Article.find({ saved: false })
+        db.Article.find()
             .sort('date')
             .populate('note')
             .then(function (dbArticleNote) {
@@ -87,20 +87,20 @@ module.exports = (app) => {
     })
 
     // push the comments into note model and update article model
-    app.post("/articles/:id", (req, res) => {
+    app.post("/articlesNote/:id", (req, res) => {
         db.Note.create(req.body)
             .then(dbNote => db.Article.findOneAndUpdate({ _id: req.params.id }, { "$push": { note: dbNote._id } }, { new: true }))
             .then(dbArticle => res.json(dbArticle))
             .catch(err => res.json(err))
     })
 
-    app.get("/updateSave/:id", (req, res) => {
-        db.Article.findOneAndUpdate({ _id: req.params.id }, { saved: true })
-            .then(dbArticle => {
-                res.redirect("/")
-            })
-            .catch(err => res.json(err))
-    });
+    // app.get("/updateSave/:id", (req, res) => {
+    //     db.Article.findOneAndUpdate({ _id: req.params.id }, { saved: true })
+    //         .then(dbArticle => {
+    //             res.redirect("/")
+    //         })
+    //         .catch(err => res.json(err))
+    // });
 
     // route to delete the comment
     app.get("/deleteComment/:id", (req, res) => {

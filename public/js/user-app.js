@@ -3,27 +3,29 @@ $(document).ready(() => {
     // Get user id from the local storage.
     let userDetail = JSON.parse(localStorage.getItem("userDetail"));
     $("#welcome").text("Welcome " + userDetail.userName)
-    console.log(userDetail)
 
     $('.collapsible').collapsible();
 
     // add note button event handler
     $(document).on("click", ".addNote", function (e) {
         e.preventDefault()
-        const id = $(this).data("id")
-        const user = "#user-" + id;
-        const note = "#note-" + id;
-
+        const articleId = $(this).data("id")
+        const userId = userDetail.userId
+        const user = "#user-" + articleId;
+        const note = "#note-" + articleId;
+        const data = {
+            user: $(user).val().trim(),
+            note: $(note).val().trim()
+        }
+        console.log(articleId+"   "+userId)
+        console.log(data)
         // ajax call to add notes
         $.ajax({
             method: "POST",
-            url: '/articles/' + id,
-            data: {
-                user: $(user).val().trim(),
-                note: $(note).val().trim()
-            }
+            url: '/addUserNote/'+userId+'/'+articleId,
+            data: data
         })
-            .then((data) => { window.location.href = '/' })
+            .then((data) => { window.location.href = '/userPage/'+userDetail.userId })
             .catch(err => console.log(err))
     })
 
