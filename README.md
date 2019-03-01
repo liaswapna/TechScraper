@@ -81,7 +81,7 @@ TechScraper
 
 *   Guest User can view comments on each article.
 
-    ![image info](./public/images/homePageNoDeleteBtn.png)
+    ![image info](./public/images/homePageNoDelete.png)
 
 *   Logged in user can view comments with delete option
 
