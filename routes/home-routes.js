@@ -94,23 +94,4 @@ module.exports = (app) => {
             .catch(err => res.json(err))
     })
 
-    // app.get("/updateSave/:id", (req, res) => {
-    //     db.Article.findOneAndUpdate({ _id: req.params.id }, { saved: true })
-    //         .then(dbArticle => {
-    //             res.redirect("/")
-    //         })
-    //         .catch(err => res.json(err))
-    // });
-
-    // route to delete the comment
-    // app.get("/deleteComment/:id", (req, res) => {
-    //     console.log(req.params.id)
-    //     db.Note.deleteOne({ _id: req.params.id })
-    //         .then(dbNote => (db.Article.findOneAndUpdate({ note: req.params.id }, { "$pull": { note: req.params.id } })))
-    //         .then(dbArticle => {
-    //             res.redirect("/")
-    //         })
-    //         .catch(err => res.json(err))
-    // });
-
 }

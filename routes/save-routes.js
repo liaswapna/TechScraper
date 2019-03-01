@@ -64,15 +64,4 @@ module.exports = (app) => {
             .catch(err => res.json(err))
     })
 
-    // app.post("/addUserNoteSavePage/:userId/:articleId", (req, res) => {
-    //     console.log(req.params)
-    //     console.log(req.body)
-    //     db.Note.create(req.body)
-    //         .then(dbNote => {
-    //             return [db.Article.findOneAndUpdate({ _id: req.params.articleId }, { "$push": { note: dbNote._id } }, { new: true }),dbNote]
-    //         })
-    //         .spread((dbArticle, dbNote) => (db.User.findOneAndUpdate({ _id: req.params.userId},{ "$push": { note: dbNote._id }},{ new: true })))
-    //         .then(dbNote => res.redirect('/savePage/'+req.params.userId))``
-    //         .catch(err => res.json(err))
-    // })
 }
